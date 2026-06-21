@@ -240,21 +240,21 @@ def test_unflagged_doc_makes_no_model_calls(valid_srt):
 def test_correct_cue_text_returns_model_lines():
     model = _scripted(_edit_block("line one\\nline two"), "done")
     corrector = Corrector(model=model)
-    out = corrector.correct_cue_text(1, ["old"])
+    out = corrector.correct_cue_text(["old"])
     assert out == ["line one", "line two"]
 
 
 def test_correct_cue_text_falls_back_to_original_when_no_edit():
     model = _scripted("I am not calling any tool.", "still no tool.")
     corrector = Corrector(model=model, max_attempts=1)
-    out = corrector.correct_cue_text(1, ["keep me"])
+    out = corrector.correct_cue_text(["keep me"])
     assert out == ["keep me"]
 
 
 def test_correct_cue_text_requires_model():
     corrector = Corrector(model=None)
     try:
-        corrector.correct_cue_text(1, ["x"])
+        corrector.correct_cue_text(["x"])
     except RuntimeError as exc:
         assert "model" in str(exc).lower()
     else:

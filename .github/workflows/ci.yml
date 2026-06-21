@@ -36,16 +36,18 @@ jobs:
         run: uv python install ${{ matrix.python-version }}
 
       - name: Create venv and install (replykit + subtitle-medic, dev extras)
-        # replykit is a sibling package in this monorepo-style layout; install it
-        # editable first so the local source is used, then subtitle-medic itself.
-        # The whole suite is hermetic (no network, no live LLM), so no provider
-        # SDKs or API keys are needed in CI.
+        # replykit is a sibling package in this monorepo-style layout. Locally and
+        # in dev we install it editable from the sibling checkout so the local
+        # source is used; in CI (no sibling checkout) we install it from git,
+        # because replykit is not yet published to PyPI. Then subtitle-medic
+        # itself. The whole suite is hermetic (no network, no live LLM at test
+        # time), so no provider SDKs or API keys are needed in CI.
         run: |
           uv venv --python ${{ matrix.python-version }}
           if [ -d "../replykit" ]; then
             uv pip install -e ../replykit
           else
-            uv pip install replykit
+            uv pip install "replykit @ git+https://github.com/edgarh92/replykit@main"
           fi
           uv pip install -e '.[dev]'
 

@@ -235,7 +235,7 @@ class Corrector:
             new_lines = self._safe_normalize(lines)
             reason = "deterministic glossary/whitespace fix" if new_lines != lines else ""
             return new_lines, reason, 0
-        new_lines = self.correct_cue_text(0, lines)
+        new_lines = self.correct_cue_text(lines)
         reason = "model edit" if new_lines != lines else ""
         return new_lines, reason, 0
 
@@ -273,7 +273,7 @@ class Corrector:
             return f"{prefix}{canonical}{suffix}"
         return token
 
-    def correct_cue_text(self, cue_index: int, lines: list[str]) -> list[str]:
+    def correct_cue_text(self, lines: list[str]) -> list[str]:
         """Propose corrected text lines for a single cue via the model.
 
         Builds a cue-scoped replykit :class:`~replykit.Agent` run with a single
