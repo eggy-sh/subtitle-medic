@@ -47,7 +47,7 @@ jobs:
           if [ -d "../replykit" ]; then
             uv pip install -e ../replykit
           else
-            uv pip install "replykit @ git+https://github.com/edgarh92/replykit@main"
+            uv pip install "replykit @ git+https://github.com/eggy-sh/replykit@main"
           fi
           uv pip install -e '.[dev]'
 
