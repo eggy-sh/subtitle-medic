@@ -1,0 +1,17 @@
+WEBVTT
+Kind: captions
+
+NOTE A short WebVTT sample with a header NOTE and a cue setting.
+
+1
+00:00:01.000 --> 00:00:03.000
+Hello world.
+
+2
+00:00:03.500 --> 00:00:06.000 align:start position:10%
+This is a second cue
+spanning two lines.
+
+3
+00:00:06.200 --> 00:00:08.000
+Final cue here.

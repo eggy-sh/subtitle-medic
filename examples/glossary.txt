@@ -1,0 +1,15 @@
+# subtitle-medic example glossary
+#
+# Two line shapes are supported:
+#   Term            -> a canonical spelling the corrector should preserve/enforce
+#   wrong => Right   -> an explicit fix from a known-bad form to its canonical form
+#
+# Blank lines and '#' comments are ignored.
+
+# canonical product / brand names
+GitHub
+Kubernetes
+
+# explicit fixes for common machine-transcription misspellings
+kuberntes => Kubernetes
+github => GitHub

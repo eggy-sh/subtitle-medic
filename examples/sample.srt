@@ -1,0 +1,12 @@
+1
+00:00:01,000 --> 00:00:09,000
+We deployed to kuberntes and the github action ran a realy long line that exceeds the studio limit.
+
+2
+00:00:10,000 --> 00:00:13,000
+The cluster scaled up
+to forty nodes in seconds.
+
+3
+00:00:14,000 --> 00:00:14,300
+oops
