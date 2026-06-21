@@ -52,17 +52,17 @@ jobs:
           uv pip install -e '.[dev]'
 
       - name: Ruff (lint)
-        run: uv run ruff check .
+        run: .venv/bin/ruff check .
 
       - name: Ruff (format check)
-        run: uv run ruff format --check .
+        run: .venv/bin/ruff format --check .
 
       - name: Pytest
-        run: uv run pytest --cov=subtitle_medic --cov-report=term-missing
+        run: .venv/bin/pytest --cov=subtitle_medic --cov-report=term-missing
 
       - name: Smoke-test the CLI and examples (hermetic)
         run: |
-          uv run subtitle-medic --help
-          uv run subtitle-medic check examples/sample.srt --json || true
-          uv run python examples/check_demo.py
-          uv run python examples/fix_demo.py
+          .venv/bin/subtitle-medic --help
+          .venv/bin/subtitle-medic check examples/sample.srt --json || true
+          .venv/bin/python examples/check_demo.py
+          .venv/bin/python examples/fix_demo.py
